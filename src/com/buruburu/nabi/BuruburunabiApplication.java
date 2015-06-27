@@ -14,6 +14,7 @@ public class BuruburunabiApplication extends Application {
     sensorStreamer.startSensor();
     SpeachRecognizerController.getInstance(SpeachRecognizerController.class).init(this);
     VibratorController.getInstance(VibratorController.class).init(this);
+    SoundController.getInstance(SoundController.class).init(this);
   }
 
   @Override

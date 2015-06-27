@@ -43,5 +43,8 @@ public class MainActivity extends Activity {
 		});
 		//とりあえず入れておく
 		VibratorController.getInstance(VibratorController.class).vibrate();
+		SoundController s = SoundController.getInstance(SoundController.class);
+		s.addSound("sample.wav");
+		s.playCurrentSound();
 	}
 }
