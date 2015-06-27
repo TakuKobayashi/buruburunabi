@@ -47,6 +47,7 @@ public class LocationLoader extends ContextSingletonBase<LocationLoader> impleme
   //デストラクタ
   @Override
   protected void finalize() throws Throwable {
+    stopRequestLocation();
     mListenerQueue.clear();
     super.finalize();
   }

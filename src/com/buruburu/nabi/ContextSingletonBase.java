@@ -1,20 +1,27 @@
 package com.buruburu.nabi;
 
+import java.util.HashMap;
+
 import android.content.Context;
+import android.util.Log;
 
 public class ContextSingletonBase<T>{
 
   @SuppressWarnings("rawtypes")
-  private static ContextSingletonBase instance;
+  private static HashMap<String, ContextSingletonBase> classnameToInstance = new HashMap<String, ContextSingletonBase>();
   protected Context context;
 
   protected ContextSingletonBase(){ }
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
   public static <T extends ContextSingletonBase> T getInstance(Class<T> clazz) {
+    Log.d(Config.DEBUG_KEY, clazz.getName());
+    ContextSingletonBase instance = classnameToInstance.get(clazz.getName());
       if(instance == null){
         try {
           instance = clazz.newInstance();
+          classnameToInstance.put(clazz.getName(), (T) instance);
+          Log.d(Config.DEBUG_KEY, clazz.getName());
         } catch (InstantiationException e) {
           e.printStackTrace();
         } catch (IllegalAccessException e) {

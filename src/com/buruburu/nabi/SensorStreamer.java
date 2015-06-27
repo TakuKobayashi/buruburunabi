@@ -30,6 +30,7 @@ public class SensorStreamer extends ContextSingletonBase<SensorStreamer> impleme
     super.init(context);
     mListenerQueue = new ArrayList<SensorStreamListener>();
     _sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+    Log.d(Config.DEBUG_KEY, "aksdgfhahgalkg");
   }
 
   public void addStraemListener(SensorStreamListener listener){
@@ -49,14 +50,14 @@ public class SensorStreamer extends ContextSingletonBase<SensorStreamer> impleme
     _sensorManager.registerListener(this, _sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
   }
 
-  public void stopRequestLocation(){
+  public void stopSensor(){
     _sensorManager.unregisterListener(this);
   }
 
   //デストラクタ
   @Override
   protected void finalize() throws Throwable {
-    _sensorManager.unregisterListener(this);
+    stopSensor();
     mListenerQueue.clear();
     super.finalize();
   }
