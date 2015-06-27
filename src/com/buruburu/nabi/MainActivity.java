@@ -10,6 +10,7 @@ import com.buruburu.nabi.SensorStreamer.SensorStreamListener;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,5 +41,7 @@ public class MainActivity extends Activity {
 				t.setText(s);
 			}
 		});
+		//とりあえず入れておく
+		VibratorController.getInstance(VibratorController.class).vibrate();
 	}
 }

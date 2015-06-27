@@ -9,6 +9,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!-- 3G/wifiで位置情報取得する用 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 録音のパーミッション -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- バイブレーターのパーミッション -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <!-- push通知 -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
