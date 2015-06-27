@@ -55,7 +55,7 @@ public class LocationLoader extends ContextSingletonBase<LocationLoader> impleme
   @Override
   public void onLocationChanged(Location location) {
 
-	  Log.d("buruburunabi", "lon:"+ location.getLongitude() + "lat:"+ location.getLatitude());
+    Log.d("buruburunabi", "lon:"+ location.getLongitude() + "lat:"+ location.getLatitude());
     _location = location;
     for(LocationUpdateListener listener : mListenerQueue){
       listener.onUpdate(location);

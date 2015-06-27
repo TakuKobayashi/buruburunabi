@@ -12,6 +12,7 @@ public class BuruburunabiApplication extends Application {
     SensorStreamer sensorStreamer = SensorStreamer.getInstance(SensorStreamer.class);
     sensorStreamer.init(this);
     sensorStreamer.startSensor();
+    SpeachRecognizerController.getInstance(SpeachRecognizerController.class).init(this);;
   }
 
   @Override
