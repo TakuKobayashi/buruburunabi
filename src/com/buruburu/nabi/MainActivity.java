@@ -21,12 +21,18 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private boolean mProcessing;
+	private WebView mMapView;
+
 	private void startNavigation(){
+		mMapView.setVisibility(View.VISIBLE);
+		mMapView.loadUrl("http://bluenavi.code4saitama.org/request.php");
 		LocationLoader.getInstance(LocationLoader.class).addUpdateListener(new LocationLoader.LocationUpdateListener() {
 			@Override
 			public void onUpdate(Location location) {
@@ -131,6 +137,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Log.d(Config.DEBUG_KEY, "aaaaaaaaaaaaa");
+
+		mMapView = (WebView) findViewById(R.id.MapWebView);
+		mMapView.getSettings().setJavaScriptEnabled(true);
+		mMapView.setVisibility(View.GONE);
+
 		SoundController s = SoundController.getInstance(SoundController.class);
 		s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
 			@Override
@@ -163,7 +174,13 @@ public class MainActivity extends Activity {
 		//startService(new Intent(MainActivity.this, MainService.class));
 	}
 
-    /**
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		ApplicationHelper.releaseWebView(mMapView);
+	}
+
+	/**
      * サービスが実行中か
      * @param className サービスのクラス名
      * @return true: 実行中です
