@@ -24,6 +24,38 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	private boolean mProcessing;
+
+	private void setupSpeechRecognize(){
+		mProcessing = false;
+		SpeachRecognizerController sp = SpeachRecognizerController.getInstance(SpeachRecognizerController.class);
+		sp.addResultCallback(new SpeachRecognizerController.SpeechRecognitionResultCallback() {
+			@Override
+			public void onResult(String word, float confidence) {
+				mProcessing = true;
+			}
+
+			@Override
+			public void onError(int error) {
+				if (!mProcessing) {
+					SpeachRecognizerController sp = SpeachRecognizerController.getInstance(SpeachRecognizerController.class);
+					sp.removeUpdateListener(this);
+					SoundController s = SoundController.getInstance(SoundController.class);
+					s.changeCurrentSound("5_notfound.wav");
+					s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+						@Override
+						public void onCompletion(MediaPlayer mp) {
+							SoundController s = SoundController.getInstance(SoundController.class);
+							s.removeSoundFinishListener(this);
+							setupSpeechRecognize();
+						}
+					});
+					s.playCurrentSound();
+				}
+			}
+		});
+		sp.start();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +67,17 @@ public class MainActivity extends Activity {
 			@Override
 			public void onCompletion(MediaPlayer mp) {
 				SoundController s = SoundController.getInstance(SoundController.class);
-				s.changeCurrentSound("2_where.wav");
-				s.playCurrentSound();
 				s.removeSoundFinishListener(this);
+				s.changeCurrentSound("2_where.wav");
+				s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+					@Override
+					public void onCompletion(MediaPlayer mp) {
+						SoundController s = SoundController.getInstance(SoundController.class);
+						s.removeSoundFinishListener(this);
+						setupSpeechRecognize();
+					}
+				});
+				s.playCurrentSound();
 			}
 		});
 		s.changeCurrentSound("1_up.wav");
