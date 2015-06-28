@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +32,8 @@ import android.widget.TextView;
 public class VibratorController extends ContextSingletonBase<VibratorController>{
 
   private Vibrator mVibrator;
+  public boolean isVibrating;
+  private Timer mVibratorTimer;
 
   public enum Pattern{
     Alert,
@@ -41,9 +45,13 @@ public class VibratorController extends ContextSingletonBase<VibratorController>
   public void init(Context context){
     super.init(context);
     mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+    mVibratorTimer = new Timer(true);
+    isVibrating = false;
   }
 
   public void vibrate(Pattern pattern){
+    Log.d(Config.DEBUG_KEY, "vibrating:"+ isVibrating);
+    if(isVibrating) return;
     long[] patterns = {0, 1000, 2000, 5000, 3000, 1000}; // OFF/ON/OFF/ON...
     if(pattern == Pattern.Alert) {
       // その１　交差点に接近などの警告ゾーンは　点滅ぶる
@@ -62,6 +70,18 @@ public class VibratorController extends ContextSingletonBase<VibratorController>
         //5秒ブル＋1秒休止の2回繰り返し
         patterns = new long[]{0,5000,1000,5000}; // OFF/ON/OFF/ON...
     }
+    isVibrating = true;
+    long sum = 0;
+    for(int i = 0;i < patterns.length;++i) {
+      sum += patterns[i];
+    }
+    TimerTask task = new TimerTask() {
+      @Override
+      public void run() {
+        isVibrating = false;
+      }
+    };
+    mVibratorTimer.schedule(task, sum);
     mVibrator.vibrate(patterns, -1);
   }
 }

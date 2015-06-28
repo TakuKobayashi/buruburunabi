@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 				TextView t = (TextView) findViewById(R.id.DebugText);
 				String s = "pitch:" + pitch + " roll:" + roll + " azimuth:" + azimuth;
 				double diffDegree = azimuth - calcAzimuthAngleDegree();
-				if(Math.abs(diffDegree) > 15){
+				if(Math.abs(diffDegree) > 25){
 					VibratorController.getInstance(VibratorController.class).vibrate(VibratorController.Pattern.TurnLeft);
 				}
 				Log.d(Config.DEBUG_KEY,""+ diffDegree);
