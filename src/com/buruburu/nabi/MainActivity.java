@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -29,6 +30,19 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Log.d(Config.DEBUG_KEY, "aaaaaaaaaaaaa");
+		SoundController s = SoundController.getInstance(SoundController.class);
+		s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				SoundController s = SoundController.getInstance(SoundController.class);
+				s.changeCurrentSound("2_where.wav");
+				s.playCurrentSound();
+				s.removeSoundFinishListener(this);
+			}
+		});
+		s.changeCurrentSound("1_up.wav");
+		s.playCurrentSound();
+		
 		SensorStreamer.getInstance(SensorStreamer.class).addStraemListener(new SensorStreamListener() {
 			@Override
 			public void onOrientationParams(double pitch, double roll, double azimuth) {
@@ -47,12 +61,14 @@ public class MainActivity extends Activity {
 			}
 		});
 		//とりあえず入れておく
+		/*
 		VibratorController.getInstance(VibratorController.class).vibrate();
 		SoundController s = SoundController.getInstance(SoundController.class);
 		s.addSound("sample.wav");
 		s.playCurrentSound();
-		isServiceRunnig("MainService");
-		startService(new Intent(MainActivity.this, MainService.class));
+		*/
+		//isServiceRunnig("MainService");
+		//startService(new Intent(MainActivity.this, MainService.class));
 	}
 
     /**
