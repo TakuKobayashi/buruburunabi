@@ -38,9 +38,18 @@ public class MainActivity extends Activity {
 			public void onOrientationParams(double pitch, double roll, double azimuth) {
 				TextView t = (TextView) findViewById(R.id.DebugText);
 				String s = "pitch:" + pitch + " roll:" + roll + " azimuth:" + azimuth;
+				VibratorController vib = VibratorController.getInstance(VibratorController.class);
+				if(vib.isVibrating) return;
 				double diffDegree = azimuth - calcAzimuthAngleDegree();
-				if(Math.abs(diffDegree) > 25){
-					VibratorController.getInstance(VibratorController.class).vibrate(VibratorController.Pattern.TurnLeft);
+				SoundController sound = SoundController.getInstance(SoundController.class);
+				if(diffDegree < -25){
+					vib.vibrate(VibratorController.Pattern.TurnRight);
+					sound.changeCurrentSound("little_right.wav");
+					sound.playCurrentSound();
+				}else if(diffDegree > 25){
+					vib.vibrate(VibratorController.Pattern.TurnLeft);
+					sound.changeCurrentSound("little_left.wav");
+					sound.playCurrentSound();
 				}
 				Log.d(Config.DEBUG_KEY,""+ diffDegree);
 

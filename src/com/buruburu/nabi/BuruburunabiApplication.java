@@ -22,6 +22,10 @@ public class BuruburunabiApplication extends Application {
     soundController.addSound("4_resetup.wav");
     soundController.addSound("5_notfound.wav");
     soundController.addSound("6_complete.wav");
+    soundController.addSound("left.wav");
+    soundController.addSound("little_left.wav");
+    soundController.addSound("little_right.wav");
+    soundController.addSound("right.wav");
   }
 
   @Override
