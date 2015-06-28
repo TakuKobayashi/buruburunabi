@@ -31,14 +31,37 @@ public class VibratorController extends ContextSingletonBase<VibratorController>
 
   private Vibrator mVibrator;
 
+  public enum Pattern{
+    Alert,
+    TurnLeft,
+    TurnRight,
+    Worn
+  }
+
   public void init(Context context){
     super.init(context);
     mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
   }
 
-  public void vibrate(){
-    //TODO テキトー
-    long[] pattern = {0, 1000, 2000, 5000, 3000, 1000}; // OFF/ON/OFF/ON...
-    mVibrator.vibrate(pattern, -1);
+  public void vibrate(Pattern pattern){
+    long[] patterns = {0, 1000, 2000, 5000, 3000, 1000}; // OFF/ON/OFF/ON...
+    if(pattern == Pattern.Alert) {
+      // その１　交差点に接近などの警告ゾーンは　点滅ぶる
+      // 0.5秒ブル＋0.4休止の5回繰り返し
+      patterns = new long[]{1000, 500, 400, 500, 400, 500, 400, 500, 400, 500}; // OFF/ON/OFF/ON...
+    }else if(pattern == Pattern.TurnLeft) {
+      // その2　左折指示　で　１ぶる
+      // 1秒ブル＋2秒休止の３回繰り返
+      patterns = new long[]{1000, 1000, 2000, 1000, 2000, 1000, 2000}; // OFF/ON/OFF/ON...
+    }else if(pattern == Pattern.TurnRight) {
+      //その3　右折指示　で　２ぶる
+      //0.5秒ブル＋0.5秒休止+1.5秒ブル+2秒休止の３回繰り返し
+      patterns = new long[]{1000, 500, 500, 1500, 2000, 500, 500, 1500, 2000, 500, 500, 1500}; // OFF/ON/OFF/ON...
+    }else if(pattern == Pattern.Worn){
+        //その4　間違え指示　で　連続ぶる
+        //5秒ブル＋1秒休止の2回繰り返し
+        patterns = new long[]{1000,5000,1000,5000}; // OFF/ON/OFF/ON...
+    }
+    mVibrator.vibrate(patterns, -1);
   }
 }
