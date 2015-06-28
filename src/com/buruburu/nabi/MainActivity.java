@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
+import android.location.Location;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -25,6 +26,54 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private boolean mProcessing;
+	private void startNavigation(){
+		LocationLoader.getInstance(LocationLoader.class).addUpdateListener(new LocationLoader.LocationUpdateListener() {
+			@Override
+			public void onUpdate(Location location) {
+
+			}
+		});
+		SensorStreamer.getInstance(SensorStreamer.class).addStraemListener(new SensorStreamListener() {
+			@Override
+			public void onOrientationParams(double pitch, double roll, double azimuth) {
+				TextView t = (TextView) findViewById(R.id.DebugText);
+				String s = "pitch:" + pitch + " roll:" + roll + " azimuth:" + azimuth;
+				double diffDegree = azimuth - calcAzimuthAngleDegree();
+				if(Math.abs(diffDegree) > 15){
+					VibratorController.getInstance(VibratorController.class).vibrate(VibratorController.Pattern.TurnLeft);
+				}
+				Log.d(Config.DEBUG_KEY,""+ diffDegree);
+
+				//Log.d(Config.DEBUG_KEY, s);
+				t.setText(s);
+			}
+
+			@Override
+			public void onGyroscopeParams(double x, double y, double z) {
+				String s = "x:" + x + " y:" + y + " z:" + z;
+				//Log.d(Config.DEBUG_KEY, s);
+				//TextView t = (TextView) findViewById(R.id.DebugText);
+				//t.setText(s);
+			}
+		});
+	}
+
+	private double calcAzimuthAngleDegree(){
+		//参考:http://kawae.dyndns.org/xt/modules/xpwiki/?%E6%96%B9%E4%BD%8D%E8%A7%92%E3%81%AE%E8%A8%88%E7%AE%97%E5%BC%8F
+		//地点(B1,L1)から地点(B2,L2)を見た場合の方位角φと距離dの計算式
+		//φ=atan2(cos(B2) * sin(L2 - L1) , cos(B1) * sin(B2) - sin(B1) * cos(B2) * cos(L2 - L1)
+		//B(緯度)は北緯が正値, 南緯は負値
+		//L(経度)は東経が正値, 西経は負値
+		LocationLoader l = LocationLoader.getInstance(LocationLoader.class);
+		Location lo = l.getCurrentLocation();
+		double targetLatitudeRad = Math.toRadians(35.615596);
+		double differentialLongitudeRad = Math.toRadians(139.777515 - lo.getLongitude());
+		double deviceLatitudeRad = Math.toRadians(lo.getLatitude());
+
+		double theta =Math.atan2(Math.cos(targetLatitudeRad) * Math.sin(differentialLongitudeRad), Math.cos(deviceLatitudeRad) * Math.sin(targetLatitudeRad) - Math.sin(deviceLatitudeRad) * Math.cos(targetLatitudeRad) * Math.cos(differentialLongitudeRad));
+		return Math.toDegrees(theta);
+	}
+
 
 	private void setupSpeechRecognize(){
 		mProcessing = false;
@@ -40,6 +89,7 @@ public class MainActivity extends Activity {
 					public void onCompletion(MediaPlayer mp) {
 						SoundController s = SoundController.getInstance(SoundController.class);
 						s.removeSoundFinishListener(this);
+						startNavigation();
 					}
 				});
 				s.playCurrentSound();
@@ -92,24 +142,7 @@ public class MainActivity extends Activity {
 		});
 		s.changeCurrentSound("1_up.wav");
 		s.playCurrentSound();
-		
-		SensorStreamer.getInstance(SensorStreamer.class).addStraemListener(new SensorStreamListener() {
-			@Override
-			public void onOrientationParams(double pitch, double roll, double azimuth) {
-				TextView t = (TextView) findViewById(R.id.DebugText);
-				String s = "pitch:" + pitch + " roll:" + roll + " azimuth:" + azimuth;
-				//Log.d(Config.DEBUG_KEY, s);
-				//t.setText(s);
-			}
-			
-			@Override
-			public void onGyroscopeParams(double x, double y, double z) {
-				String s = "x:" + x + " y:" + y + " z:" + z;
-				//Log.d(Config.DEBUG_KEY, s);
-				TextView t = (TextView) findViewById(R.id.DebugText);
-				t.setText(s);
-			}
-		});
+
 		//とりあえず入れておく
 		/*
 		VibratorController.getInstance(VibratorController.class).vibrate();
