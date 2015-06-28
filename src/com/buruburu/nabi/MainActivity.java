@@ -33,6 +33,16 @@ public class MainActivity extends Activity {
 			@Override
 			public void onResult(String word, float confidence) {
 				mProcessing = true;
+				SoundController s = SoundController.getInstance(SoundController.class);
+				s.changeCurrentSound("3_setup.wav");
+				s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+					@Override
+					public void onCompletion(MediaPlayer mp) {
+						SoundController s = SoundController.getInstance(SoundController.class);
+						s.removeSoundFinishListener(this);
+					}
+				});
+				s.playCurrentSound();
 			}
 
 			@Override
