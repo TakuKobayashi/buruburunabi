@@ -1,7 +1,6 @@
 package com.buruburu.nabi;
 
 import java.util.List;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -9,13 +8,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.buruburu.nabi.SensorStreamer.SensorStreamListener;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
 import android.location.Location;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -48,15 +48,15 @@ public class MainActivity extends Activity {
 				VibratorController vib = VibratorController.getInstance(VibratorController.class);
 				if(vib.isVibrating) return;
 				double diffDegree = azimuth - calcAzimuthAngleDegree();
-				SoundController sound = SoundController.getInstance(SoundController.class);
+				MediaPlayerCaches sound = MediaPlayerCaches.getInstance(MediaPlayerCaches.class);
 				if(diffDegree < -25){
 					vib.vibrate(VibratorController.Pattern.TurnRight);
-					sound.changeCurrentSound("little_right.wav");
-					sound.playCurrentSound();
+					MediaPlayer mp = sound.getMediaPlayer("little_right.wav");
+					mp.start();
 				}else if(diffDegree > 25){
 					vib.vibrate(VibratorController.Pattern.TurnLeft);
-					sound.changeCurrentSound("little_left.wav");
-					sound.playCurrentSound();
+					MediaPlayer mp = sound.getMediaPlayer("little_left.wav");
+					mp.start();
 				}
 				Log.d(Config.DEBUG_KEY,""+ diffDegree);
 
@@ -86,10 +86,9 @@ public class MainActivity extends Activity {
 		double differentialLongitudeRad = Math.toRadians(139.777515 - lo.getLongitude());
 		double deviceLatitudeRad = Math.toRadians(lo.getLatitude());
 
-		double theta =Math.atan2(Math.cos(targetLatitudeRad) * Math.sin(differentialLongitudeRad), Math.cos(deviceLatitudeRad) * Math.sin(targetLatitudeRad) - Math.sin(deviceLatitudeRad) * Math.cos(targetLatitudeRad) * Math.cos(differentialLongitudeRad));
+		double theta = Math.atan2(Math.cos(targetLatitudeRad) * Math.sin(differentialLongitudeRad), Math.cos(deviceLatitudeRad) * Math.sin(targetLatitudeRad) - Math.sin(deviceLatitudeRad) * Math.cos(targetLatitudeRad) * Math.cos(differentialLongitudeRad));
 		return Math.toDegrees(theta);
 	}
-
 
 	private void setupSpeechRecognize(){
 		mProcessing = false;
@@ -98,17 +97,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onResult(String word, float confidence) {
 				mProcessing = true;
-				SoundController s = SoundController.getInstance(SoundController.class);
-				s.changeCurrentSound("3_setup.wav");
-				s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+				MediaPlayer mp = MediaPlayerCaches.getInstance(MediaPlayerCaches.class).getMediaPlayer("3_setup.wav");
+				mp.setOnCompletionListener(new OnCompletionListener() {
 					@Override
 					public void onCompletion(MediaPlayer mp) {
-						SoundController s = SoundController.getInstance(SoundController.class);
-						s.removeSoundFinishListener(this);
 						startNavigation();
 					}
 				});
-				s.playCurrentSound();
+				mp.start();
 			}
 
 			@Override
@@ -116,23 +112,21 @@ public class MainActivity extends Activity {
 				if (!mProcessing) {
 					SpeachRecognizerController sp = SpeachRecognizerController.getInstance(SpeachRecognizerController.class);
 					sp.removeUpdateListener(this);
-					SoundController s = SoundController.getInstance(SoundController.class);
-					s.changeCurrentSound("5_notfound.wav");
-					s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+					MediaPlayer mp = MediaPlayerCaches.getInstance(MediaPlayerCaches.class).getMediaPlayer("5_notfound.wav");
+					mp.setOnCompletionListener(new OnCompletionListener() {
 						@Override
 						public void onCompletion(MediaPlayer mp) {
-							SoundController s = SoundController.getInstance(SoundController.class);
-							s.removeSoundFinishListener(this);
 							setupSpeechRecognize();
 						}
 					});
-					s.playCurrentSound();
+					mp.start();
 				}
 			}
 		});
 		sp.start();
 	}
 
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -144,34 +138,21 @@ public class MainActivity extends Activity {
 		mMapView.getSettings().setJavaScriptEnabled(true);
 		mMapView.setVisibility(View.GONE);
 
-		SoundController s = SoundController.getInstance(SoundController.class);
-		s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+		MediaPlayer mp = MediaPlayerCaches.getInstance(MediaPlayerCaches.class).getMediaPlayer("1_up.wav");
+		mp.setOnCompletionListener(new OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mp) {
-				SoundController s = SoundController.getInstance(SoundController.class);
-				s.removeSoundFinishListener(this);
-				s.changeCurrentSound("2_where.wav");
-				s.addSoundFinishListener(new SoundController.SoundCompletionListener() {
+				MediaPlayer mp2 = MediaPlayerCaches.getInstance(MediaPlayerCaches.class).getMediaPlayer("2_where.wav");
+				mp2.setOnCompletionListener(new OnCompletionListener() {
 					@Override
 					public void onCompletion(MediaPlayer mp) {
-						SoundController s = SoundController.getInstance(SoundController.class);
-						s.removeSoundFinishListener(this);
 						setupSpeechRecognize();
 					}
 				});
-				s.playCurrentSound();
+				mp2.start();
 			}
 		});
-		s.changeCurrentSound("1_up.wav");
-		s.playCurrentSound();
-
-		//とりあえず入れておく
-		/*
-		VibratorController.getInstance(VibratorController.class).vibrate();
-		SoundController s = SoundController.getInstance(SoundController.class);
-		s.addSound("sample.wav");
-		s.playCurrentSound();
-		*/
+		mp.start();
 		//isServiceRunnig("MainService");
 		//startService(new Intent(MainActivity.this, MainService.class));
 	}

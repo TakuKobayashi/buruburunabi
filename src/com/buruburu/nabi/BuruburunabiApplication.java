@@ -14,24 +14,23 @@ public class BuruburunabiApplication extends Application {
     sensorStreamer.startSensor();
     SpeachRecognizerController.getInstance(SpeachRecognizerController.class).init(this);
     VibratorController.getInstance(VibratorController.class).init(this);
-    SoundController soundController = SoundController.getInstance(SoundController.class);
-    soundController.init(this);
-    soundController.addSound("1_up.wav");
-    soundController.addSound("2_where.wav");
-    soundController.addSound("3_setup.wav");
-    soundController.addSound("4_resetup.wav");
-    soundController.addSound("5_notfound.wav");
-    soundController.addSound("6_complete.wav");
-    soundController.addSound("left.wav");
-    soundController.addSound("little_left.wav");
-    soundController.addSound("little_right.wav");
-    soundController.addSound("right.wav");
+    MediaPlayerCaches caches = MediaPlayerCaches.getInstance(MediaPlayerCaches.class);
+    caches.init(this);
+    caches.setMediaPlayersFromAssets("1_up.wav",
+                                     "2_where.wav",
+                                     "3_setup.wav",
+                                     "4_resetup.wav",
+                                     "5_notfound.wav",
+                                     "6_complete.wav",
+                                     "left.wav",
+                                     "little_left.wav",
+                                     "little_right.wav",
+                                     "right.wav"
+                                    );
   }
 
   @Override
   public void onTerminate() {
     super.onTerminate();
-    LocationLoader.getInstance(LocationLoader.class).stopRequestLocation();
-    SensorStreamer.getInstance(SensorStreamer.class).stopSensor();
   }
 }
