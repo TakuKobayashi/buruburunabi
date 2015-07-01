@@ -35,6 +35,7 @@ public class SpeachRecognizerController extends ContextSingletonBase<SpeachRecog
     super.init(context);
     _speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
     _speechRecognizer.setRecognitionListener(this);
+    mListenerQueue = new ArrayList<SpeechRecognitionResultCallback>();
   }
 
   public void addResultCallback(SpeechRecognitionResultCallback callback){
@@ -48,6 +49,7 @@ public class SpeachRecognizerController extends ContextSingletonBase<SpeachRecog
   private void resultAction(Bundle results){
     float[] confidence = results.getFloatArray(SpeechRecognizer.CONFIDENCE_SCORES);
     ArrayList<String> recData = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+    Log.d(Config.DEBUG_KEY, "" + recData);
     float prev = -1;
     int index = 0;
     for(int i = 0;i < confidence.length;++i){
