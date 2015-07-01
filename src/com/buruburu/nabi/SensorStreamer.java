@@ -15,7 +15,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class SensorStreamer extends ContextSingletonBase<SensorStreamer> implements SensorEventListener{
+public class SensorStreamer extends ContextSingletonBase implements SensorEventListener{
 
   private SensorManager _sensorManager;
   private ArrayList<SensorStreamListener> mListenerQueue;

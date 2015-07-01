@@ -10,7 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class LocationLoader extends ContextSingletonBase<LocationLoader> implements LocationListener{
+public class LocationLoader extends ContextSingletonBase implements LocationListener{
 
   private LocationManager _locationManager;
   private Location _location;

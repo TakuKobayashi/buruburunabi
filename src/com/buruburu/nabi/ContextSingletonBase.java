@@ -5,7 +5,7 @@ import java.util.HashMap;
 import android.content.Context;
 import android.util.Log;
 
-public class ContextSingletonBase<T>{
+public abstract class ContextSingletonBase{
 
   @SuppressWarnings("rawtypes")
   private static HashMap<String, ContextSingletonBase> classnameToInstance = new HashMap<String, ContextSingletonBase>();

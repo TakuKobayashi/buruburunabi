@@ -30,7 +30,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SoundController extends ContextSingletonBase<SoundController> implements MediaPlayer.OnCompletionListener{
+public class SoundController extends ContextSingletonBase implements MediaPlayer.OnCompletionListener{
 
   private HashMap<String, MediaPlayer> mSoundList;
   private MediaPlayer mSound;

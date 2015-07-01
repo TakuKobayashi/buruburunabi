@@ -29,7 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class VibratorController extends ContextSingletonBase<VibratorController>{
+public class VibratorController extends ContextSingletonBase{
 
   private Vibrator mVibrator;
   public boolean isVibrating;

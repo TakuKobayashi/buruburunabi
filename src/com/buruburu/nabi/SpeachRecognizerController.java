@@ -26,7 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SpeachRecognizerController extends ContextSingletonBase<SpeachRecognizerController> implements RecognitionListener{
+public class SpeachRecognizerController extends ContextSingletonBase implements RecognitionListener{
 
   private SpeechRecognizer _speechRecognizer;
   private ArrayList<SpeechRecognitionResultCallback> mListenerQueue;
