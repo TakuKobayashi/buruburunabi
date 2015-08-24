@@ -1,0 +1,306 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .gradle/
+* .gradle/2.2.1/
+* .gradle/2.2.1/taskArtifacts/
+* .gradle/2.2.1/taskArtifacts/cache.properties
+* .gradle/2.2.1/taskArtifacts/cache.properties.lock
+* .gradle/2.2.1/taskArtifacts/fileHashes.bin
+* .gradle/2.2.1/taskArtifacts/fileSnapshots.bin
+* .gradle/2.2.1/taskArtifacts/outputFileStates.bin
+* .gradle/2.2.1/taskArtifacts/taskArtifacts.bin
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* app/
+* app/app.iml
+* app/build/
+* app/build/generated/
+* app/build/generated/source/
+* app/build/generated/source/buildConfig/
+* app/build/generated/source/buildConfig/androidTest/
+* app/build/generated/source/buildConfig/androidTest/debug/
+* app/build/generated/source/buildConfig/androidTest/debug/com/
+* app/build/generated/source/buildConfig/androidTest/debug/com/buruburu/
+* app/build/generated/source/buildConfig/androidTest/debug/com/buruburu/nabi/
+* app/build/generated/source/buildConfig/androidTest/debug/com/buruburu/nabi/test/
+* app/build/generated/source/buildConfig/androidTest/debug/com/buruburu/nabi/test/BuildConfig.java
+* app/build/generated/source/buildConfig/debug/
+* app/build/generated/source/buildConfig/debug/com/
+* app/build/generated/source/buildConfig/debug/com/buruburu/
+* app/build/generated/source/buildConfig/debug/com/buruburu/nabi/
+* app/build/generated/source/buildConfig/debug/com/buruburu/nabi/BuildConfig.java
+* app/build/generated/source/r/
+* app/build/generated/source/r/debug/
+* app/build/generated/source/r/debug/com/
+* app/build/generated/source/r/debug/com/buruburu/
+* app/build/generated/source/r/debug/com/buruburu/nabi/
+* app/build/generated/source/r/debug/com/buruburu/nabi/Manifest.java
+* app/build/generated/source/r/debug/com/buruburu/nabi/R.java
+* app/build/intermediates/
+* app/build/intermediates/assets/
+* app/build/intermediates/assets/debug/
+* app/build/intermediates/assets/debug/1_up.wav
+* app/build/intermediates/assets/debug/2_where.wav
+* app/build/intermediates/assets/debug/3_setup.wav
+* app/build/intermediates/assets/debug/4_resetup.wav
+* app/build/intermediates/assets/debug/5_notfound.wav
+* app/build/intermediates/assets/debug/6_complete.wav
+* app/build/intermediates/assets/debug/left.wav
+* app/build/intermediates/assets/debug/little_left.wav
+* app/build/intermediates/assets/debug/little_right.wav
+* app/build/intermediates/assets/debug/right.wav
+* app/build/intermediates/classes/
+* app/build/intermediates/classes/debug/
+* app/build/intermediates/classes/debug/com/
+* app/build/intermediates/classes/debug/com/buruburu/
+* app/build/intermediates/classes/debug/com/buruburu/nabi/
+* app/build/intermediates/classes/debug/com/buruburu/nabi/ApplicationHelper.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/BuildConfig.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/BuruburunabiApplication.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Config.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/ContextSingletonBase.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/CustomHttpRequest.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/HttpRequestBase$Listener.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/HttpRequestBase.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/LocationLoader$LocationUpdateListener.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/LocationLoader.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$1.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$2.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$3$1.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$3$2.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$3.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$4$1.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity$4.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainActivity.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainService$1.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainService$MainServiceBinder.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MainService.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Manifest$permission.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Manifest.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/MediaPlayerCaches.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models$ApiResponse.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models$Guidance.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models$Link.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models$LonLat.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models$Route.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models$Vibration.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/Models.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/R$attr.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/R$drawable.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/R$id.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/R$layout.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/R$string.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/R.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/SensorStreamer$SensorStreamListener.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/SensorStreamer.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/SpeachRecognizerController$SpeechRecognitionResultCallback.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/SpeachRecognizerController.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/VibratorController$1.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/VibratorController$Pattern.class
+* app/build/intermediates/classes/debug/com/buruburu/nabi/VibratorController.class
+* app/build/intermediates/dex/
+* app/build/intermediates/dex/debug/
+* app/build/intermediates/dex/debug/classes.dex
+* app/build/intermediates/exploded-aar/
+* app/build/intermediates/exploded-aar/com.android.support/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aapt/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aapt/AndroidManifest.xml
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/MediaMetadataCompat.aidl
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/RatingCompat.aidl
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/session/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/session/MediaSessionCompat.aidl
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/session/ParcelableVolumeInfo.aidl
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/aidl/android/support/v4/media/session/PlaybackStateCompat.aidl
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/annotations.zip
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/
+* app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar
+* app/build/intermediates/incremental/
+* app/build/intermediates/incremental/aidl/
+* app/build/intermediates/incremental/aidl/androidTest/
+* app/build/intermediates/incremental/aidl/androidTest/debug/
+* app/build/intermediates/incremental/aidl/androidTest/debug/dependency.store
+* app/build/intermediates/incremental/aidl/debug/
+* app/build/intermediates/incremental/aidl/debug/dependency.store
+* app/build/intermediates/incremental/mergeAssets/
+* app/build/intermediates/incremental/mergeAssets/androidTest/
+* app/build/intermediates/incremental/mergeAssets/androidTest/debug/
+* app/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml
+* app/build/intermediates/incremental/mergeAssets/debug/
+* app/build/intermediates/incremental/mergeAssets/debug/merger.xml
+* app/build/intermediates/incremental/mergeResourcesandroidTest/
+* app/build/intermediates/incremental/mergeResourcesandroidTest/debug/
+* app/build/intermediates/incremental/mergeResourcesandroidTest/debug/merger.xml
+* app/build/intermediates/incremental/mergeResourcesdebug/
+* app/build/intermediates/incremental/mergeResourcesdebug/merger.xml
+* app/build/intermediates/manifest/
+* app/build/intermediates/manifest/androidTest/
+* app/build/intermediates/manifest/androidTest/debug/
+* app/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml
+* app/build/intermediates/manifests/
+* app/build/intermediates/manifests/full/
+* app/build/intermediates/manifests/full/debug/
+* app/build/intermediates/manifests/full/debug/AndroidManifest.xml
+* app/build/intermediates/pre-dexed/
+* app/build/intermediates/pre-dexed/debug/
+* app/build/intermediates/pre-dexed/debug/android-support-v4-c168acd01c84d27ab1eac22305b178c6f5c34d9e.jar
+* app/build/intermediates/pre-dexed/debug/google-play-services-f74331d9e560e908787b23584d3c687fae373d54.jar
+* app/build/intermediates/pre-dexed/debug/gson-2.3.1-5e5ef96c9fdfe02fd8bf9dc86ed742396119b633.jar
+* app/build/intermediates/pre-dexed/debug/volley-28f19af8fb358a5e95b9e91670886a96f0da624b.jar
+* app/build/intermediates/res/
+* app/build/intermediates/res/merged/
+* app/build/intermediates/res/merged/debug/
+* app/build/intermediates/res/merged/debug/drawable-hdpi/
+* app/build/intermediates/res/merged/debug/drawable-hdpi/icon.png
+* app/build/intermediates/res/merged/debug/drawable-ldpi/
+* app/build/intermediates/res/merged/debug/drawable-ldpi/icon.png
+* app/build/intermediates/res/merged/debug/drawable-mdpi/
+* app/build/intermediates/res/merged/debug/drawable-mdpi/icon.png
+* app/build/intermediates/res/merged/debug/drawable-xhdpi/
+* app/build/intermediates/res/merged/debug/drawable-xhdpi/icon.png
+* app/build/intermediates/res/merged/debug/drawable-xxhdpi/
+* app/build/intermediates/res/merged/debug/drawable-xxhdpi/icon.png
+* app/build/intermediates/res/merged/debug/drawable-xxxhdpi/
+* app/build/intermediates/res/merged/debug/drawable-xxxhdpi/icon.png
+* app/build/intermediates/res/merged/debug/layout/
+* app/build/intermediates/res/merged/debug/layout/activity_main.xml
+* app/build/intermediates/res/merged/debug/values/
+* app/build/intermediates/res/merged/debug/values/values.xml
+* app/build/intermediates/res/resources-debug-androidTest.ap_
+* app/build/intermediates/res/resources-debug.ap_
+* app/build/intermediates/symbols/
+* app/build/intermediates/symbols/debug/
+* app/build/intermediates/symbols/debug/R.txt
+* app/build/outputs/
+* app/build/outputs/apk/
+* app/build/outputs/apk/app-debug-unaligned.apk
+* app/build/outputs/apk/app-debug.apk
+* app/build/outputs/logs/
+* app/build/outputs/logs/manifest-merger-debug-report.txt
+* build.gradle
+* buruburunabi.iml
+* buruburunabi/
+* buruburunabi/build.gradle
+* buruburunabi/libs/
+* buruburunabi/libs/google-play-services.jar
+* buruburunabi/libs/volley.jar
+* buruburunabi/src/
+* buruburunabi/src/main/
+* buruburunabi/src/main/AndroidManifest.xml
+* buruburunabi/src/main/assets/
+* buruburunabi/src/main/assets/1_up.wav
+* buruburunabi/src/main/assets/2_where.wav
+* buruburunabi/src/main/assets/3_setup.wav
+* buruburunabi/src/main/assets/4_resetup.wav
+* buruburunabi/src/main/assets/5_notfound.wav
+* buruburunabi/src/main/assets/6_complete.wav
+* buruburunabi/src/main/assets/left.wav
+* buruburunabi/src/main/assets/little_left.wav
+* buruburunabi/src/main/assets/little_right.wav
+* buruburunabi/src/main/assets/right.wav
+* buruburunabi/src/main/java/
+* buruburunabi/src/main/java/com/
+* buruburunabi/src/main/java/com/buruburu/
+* buruburunabi/src/main/java/com/buruburu/nabi/
+* buruburunabi/src/main/java/com/buruburu/nabi/ApplicationHelper.java
+* buruburunabi/src/main/java/com/buruburu/nabi/BuruburunabiApplication.java
+* buruburunabi/src/main/java/com/buruburu/nabi/Config.java
+* buruburunabi/src/main/java/com/buruburu/nabi/ContextSingletonBase.java
+* buruburunabi/src/main/java/com/buruburu/nabi/CustomHttpRequest.java
+* buruburunabi/src/main/java/com/buruburu/nabi/HttpRequestBase.java
+* buruburunabi/src/main/java/com/buruburu/nabi/LocationLoader.java
+* buruburunabi/src/main/java/com/buruburu/nabi/MainActivity.java
+* buruburunabi/src/main/java/com/buruburu/nabi/MainService.java
+* buruburunabi/src/main/java/com/buruburu/nabi/MediaPlayerCaches.java
+* buruburunabi/src/main/java/com/buruburu/nabi/Models.java
+* buruburunabi/src/main/java/com/buruburu/nabi/SensorStreamer.java
+* buruburunabi/src/main/java/com/buruburu/nabi/SpeachRecognizerController.java
+* buruburunabi/src/main/java/com/buruburu/nabi/VibratorController.java
+* buruburunabi/src/main/res/
+* buruburunabi/src/main/res/drawable-hdpi/
+* buruburunabi/src/main/res/drawable-hdpi/icon.png
+* buruburunabi/src/main/res/drawable-ldpi/
+* buruburunabi/src/main/res/drawable-ldpi/icon.png
+* buruburunabi/src/main/res/drawable-mdpi/
+* buruburunabi/src/main/res/drawable-mdpi/icon.png
+* buruburunabi/src/main/res/drawable-xhdpi/
+* buruburunabi/src/main/res/drawable-xhdpi/icon.png
+* buruburunabi/src/main/res/drawable-xxhdpi/
+* buruburunabi/src/main/res/drawable-xxhdpi/icon.png
+* buruburunabi/src/main/res/drawable-xxxhdpi/
+* buruburunabi/src/main/res/drawable-xxxhdpi/icon.png
+* buruburunabi/src/main/res/layout/
+* buruburunabi/src/main/res/layout/activity_main.xml
+* buruburunabi/src/main/res/values/
+* buruburunabi/src/main/res/values/strings.xml
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:22.2.0
+gson-2.3.1.jar => com.google.code.gson:gson:2.3.1
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => buruburunabi/src/main/AndroidManifest.xml
+* assets/ => buruburunabi/src/main/assets/
+* libs/google-play-services.jar => buruburunabi/libs/google-play-services.jar
+* libs/volley.jar => buruburunabi/libs/volley.jar
+* res/ => buruburunabi/src/main/res/
+* src/ => buruburunabi/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

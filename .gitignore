@@ -31,3 +31,4 @@ proguard/
 .idea/libraries/
 .gradle
 app/build/
+build/
